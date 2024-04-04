@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'top#index'
   resources :users, only: %i[new create]
+  resources :posts, only: %i[new index create show edit update destroy]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

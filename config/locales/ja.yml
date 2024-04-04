@@ -1,0 +1,27 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+  defaults:
+  user_sessions:
+    new:
+      title: ログイン
+  users:
+    new:
+      title: ユーザー登録
+  posts:
+    new:
+      title: 投稿作成
+    create:
+    show:
+      title: 投稿詳細
+    index:
+      title: 投稿一覧
+    edit:
+      title: 投稿編集
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"
