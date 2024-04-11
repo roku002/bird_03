@@ -76,3 +76,7 @@ end
 
 gem 'sorcery'
 gem 'faker'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
+gem 'letter_opener_web'
+gem 'config'

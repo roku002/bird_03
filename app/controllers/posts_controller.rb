@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc)
+    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -44,6 +44,9 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '投稿を削除しました', status: :see_other
   end
 
+  def likes
+    @posts = current_user.likes_posts
+  end
 
   private
 
