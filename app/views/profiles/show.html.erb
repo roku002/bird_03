@@ -1,0 +1,12 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1 class="float-left mb-5">のマイページ</h1>
+      <table class="table">
+        <div  scope="row">氏名</div>
+          <div><%= current_user.name %></div>
+        </div>
+      <div class='text-center'>
+        <%= link_to '登録ページへ', new_user_path %>
+        <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path %>
+      </div>
