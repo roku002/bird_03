@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
 
+  get 'bird', to: 'static#bird'
+  get 'terms', to: 'static#terms'
+  get 'policy', to: "static#policy"
+  get 'contact', to: "static#contact"
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'

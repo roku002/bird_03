@@ -10,10 +10,12 @@
           <% if current_user.own?(post) %>
             <div class='ms-auto'>
               <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
-              <i class="bi bi-pencil-fill"></i>
+                <i class="bi bi-pencil-fill"></i>
+                編集
               <% end %>
               <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？'} do %>
                 <i class="bi bi-trash-fill"></i>
+                削除
               <% end %>
             </div>
           <% else %>
@@ -21,7 +23,7 @@
           <% end %>
         </div>
         <ul class="list-inline">
-          <li><i class="bi bi-person"></i><%= post.user.name %></li>
+          <li><i class="bi bi-person"></i><a href="/posts/new"><%= post.user.name %></a></li>
           <li><i class="bi bi-calendar"></i><%= l post.created_at, format: :short %></li>
         </ul>
         <p class="card-text"><%= post.body %></p>
