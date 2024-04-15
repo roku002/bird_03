@@ -1,4 +1,16 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        password: パスワード
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              blank: が空です
+            password:
+              too_short: が短すぎます
   helpers:
     submit:
       create: 登録

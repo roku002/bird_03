@@ -13,16 +13,18 @@
             <div class="col-md-9">
               <h3 style="display: inline;"><%= @post.title %></h3>
               <ul class="list-inline">
-                <li class="list-inline-item"><%= "by #{@post.user.name}" %></li>
+                <li class="list-inline-item"><a href="/posts/new"><%= "by #{@post.user.name}" %></a></li>
                 <li class="list-inline-item"><%= l @post.created_at, format: :short %></li>
               </ul>
               <% if current_user.own?(@post) %>
                 <div class='d-flex justify-content-end'>
                   <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
                     <i class="bi bi-pencil-fill"></i>
+                    編集
                   <% end %>
                   <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？'} do %>
                     <i class="bi bi-trash-fill"></i>
+                    削除
                   <% end %>
                 </div>
               <% end %>
@@ -34,8 +36,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        シェア
+      <div class="d-grid gap-2 col-2">
+        <a class="btn btn-primary btn-lg" href="#" role="button">シェア</a>
       </div>
     </div>
   </div>
