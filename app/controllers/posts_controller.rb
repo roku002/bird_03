@@ -10,12 +10,24 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = current_user.posts.new(post_params)
+    tag_names = params[:post][:tag_names].split(",")
+    tags = tag_names.map{ |tag_name| Tag.find_or_initialize_by(name: tag_name) }
+    tags.each do |tag|
+      if tag.invalid?
+        @tag_name = params[:tag_name]
+        @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
+        return render :edit, status: :unprocessable_entity
+      end
+    end
+
+  @post.tags = tags
     if @post.save
-      redirect_to posts_path, success: '投稿しました'
+      redirect_to post_path(@post), success: '投稿を作成しました'
     else
-      flash.now[:danger] = '投稿に失敗しました'
-      render :index, status: :unprocessable_entity
+      @tag_name = params[:tag_name]
+      flash.now[:danger] = '投稿を作成できませんでした'
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,13 +41,23 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    if @post.update(post_params)
+    tag_names = params[:post][:tag_names].split(",")
+    tags = tag_names.map { |tag_name| Tag.find_or_create_by(name: tag_name) }
+    tags.each do |tag|
+      if tag.invalid?
+        @tag_name = params[:tag_name]
+        @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
+        return render :edit, status: :unprocessable_entity
+      end
+    end
+
+    if @post.update(post_params) && @post.update!(tags: tags)
       redirect_to post_path(@post), success: '投稿を更新しました'
     else
+      @tag_name = params[:tag_name]
       flash.now[:danger] = '投稿を更新できませんでした'
       render :edit, status: :unprocessable_entity
     end
-
   end
 
   def destroy
@@ -51,6 +73,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'contact/new'
+  get 'contact/confirm'
+  get 'contact/done'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,11 +17,17 @@ Rails.application.routes.draw do
   end
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
+  resources :contacts, only: [:new, :create] do
+    collection do
+        post 'confirm'
+        post 'back'
+        get 'done'
+    end
+  end
 
   get 'bird', to: 'static#bird'
   get 'terms', to: 'static#terms'
   get 'policy', to: "static#policy"
-  get 'contact', to: "static#contact"
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'

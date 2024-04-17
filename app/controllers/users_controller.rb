@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def post_list
+    @posts = @user.posts
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
