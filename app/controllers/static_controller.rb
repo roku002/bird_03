@@ -5,9 +5,6 @@ class StaticController < ApplicationController
   def policy
   end
 
-  def contact
-  end
-
   def bird
   end
 end

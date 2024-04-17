@@ -19,6 +19,7 @@ services:
       - bundle_data:/usr/local/bundle:cached
       - node_modules:/app/node_modules
     environment:
+      EMAIL_ADDRESS: hoge@hoge.com
       TZ: Asia/Tokyo
     ports:
       - "3000:3000"
