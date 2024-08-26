@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def post_list
-    @posts = @user.posts
+    @user = User.find_by(id: params[:id])
+    @posts = @user.posts.page(params[:page])
   end
 
   def create

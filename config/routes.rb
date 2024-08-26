@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'top#index'
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create] do
+    get 'post_list', on: :member
+  end
   resources :posts, only: %i[new index create show edit update destroy] do
     resources :likes, only: %i[create destroy]
     collection do

@@ -33,8 +33,15 @@
           <% end %>
         </div>
         <ul class="list-inline">
-          <li><i class="bi bi-person"></i><a href="/posts/new"><%= post.user.name %></a></li>
-          <li><i class="bi bi-calendar"></i><%= l post.created_at, format: :short %></li>
+          <li>
+            <i class="bi bi-person"></i>
+            <%= link_to post.user.name, post_list_user_path(post.user), class: "btn btn-link" %>
+            <!--<a href="/posts/new"><%= post.user.name %></a></li>-->
+          </li>
+          <li>
+            <i class="bi bi-calendar"></i>
+            <%= l post.created_at, format: :short %>
+          </li>
         </ul>
         <p class="card-text"><%= post.body %></p>
       </div>
