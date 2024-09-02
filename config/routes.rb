@@ -12,11 +12,11 @@ Rails.application.routes.draw do
     get 'post_list', on: :member
   end
   resources :posts, only: %i[new index create show edit update destroy] do
-    resources :likes, only: %i[create destroy]
     collection do
       get :likes
     end
   end
+  resources :likes, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
   resources :contacts, only: [:new, :create] do

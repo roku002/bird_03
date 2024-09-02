@@ -1,0 +1,21 @@
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+
+    </div>
+  </div>
+  <!-- 掲示板一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @like_posts.present? %>
+          <%#= render @like_posts %>
+          <%= render partial: 'post_index', collection: @like_posts, as: :post %>
+        <% else %>
+          <p><%= t('.no_like') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 module ApplicationHelper
-  def page_title(title)
+  def page_title(title = '')
     base_title = 'BIRD APP' 
-
-    title.empty? ? base_title : title + " | " +  base_title
+    title.present? ? "#{title} | #{base_title}" : base_title
   end
 end

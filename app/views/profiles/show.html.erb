@@ -11,15 +11,17 @@
         <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path %>
       </div>-->
 
+<% content_for(:title, t('.title')) %>
 <div class="container">
 <h1 class="float-left mb-5"><%= current_user.name %>のマイページ</h1>
-  <div class='row' style="padding-top: 70px; padding-bottom: 30px;">
+  <div class='row' style="padding-top: 80px; padding-bottom: 30px;">
     <div class="d-grid gap-2 col-6 mx-auto">
-      <%= link_to "自分の投稿を見る", "#", class: "btn btn-primary btn-lg" %>
+      <%= link_to "自分の投稿を見る", post_list_user_path(current_user), class: "btn btn-primary btn-lg" %>
     </div>
   </div>
-  <div class='row' style="padding-bottom: 30px;">
+  <div class='row' style="padding-top: 30px; padding-bottom: 30px;">
     <div class="d-grid gap-2 col-6 mx-auto">
-      <a class="btn btn-primary btn-lg" href="/password_resets/new" role="button">パスワードを変更する</a>
+    <%= link_to "いいね、した投稿一覧", likes_posts_path, class: "btn btn-primary btn-lg" %>
     </div>
   </div>
+</div>
