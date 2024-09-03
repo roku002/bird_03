@@ -1,7 +1,17 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: %i[edit update]
 
-  def show
+  def show; end
+
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      redirect_to profile_path, success: "ユーザーを変更しました"
+    else
+      flash.now['danger'] = "ユーザーを変更できませんでした"
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
@@ -11,6 +21,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:email, :name)
   end
 end

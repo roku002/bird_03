@@ -14,3 +14,5 @@ ja:
         body: 本文
         tag_names: タグ
         image: 画像
+      contact:
+        message: メッセージ

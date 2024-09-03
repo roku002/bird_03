@@ -2,7 +2,9 @@ ja:
   defaults:
     post: 投稿
     create: 投稿
+    edit: 編集
     delete_confirm: 削除しますか？
+    password_reset: パスワードリセット
     flash_message:
       require_login: ログインしてください
   helpers:
@@ -31,6 +33,7 @@ ja:
     create:
       success: ユーザー登録が完了しました
       danger: ユーザー登録に失敗しました
+    post_list:
   posts:
     new:
       title: 投稿作成
@@ -54,6 +57,24 @@ ja:
   profiles:
     show:
       title: マイページ
+    edit:
+      title: マイページ編集
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    edit:
+      title: パスワードリセット
+    create:
+      success: パスワードリセット手順を送信しました
+    update:
+      success: パスワードを変更しました
+      danger: パスワードを変更出来ませんでした
+  contacts:
+    new:
+      title: お問い合わせ
+    confirm:
+      title: 入力内容確認
   static:
     bird:
       title: 文鳥の魅力
@@ -72,6 +93,13 @@ ja:
     post_index: 投稿一覧
     create_post: 投稿作成
     mypage: マイページ
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

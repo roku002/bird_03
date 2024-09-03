@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  skip_before_action :require_login
+
   def new
     @contact = Contact.new
   end
@@ -29,8 +31,7 @@ class ContactsController < ApplicationController
     end
   end
 
-  def done
-  end
+  def done; end
 
   private
 
