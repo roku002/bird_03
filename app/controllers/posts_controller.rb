@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login, only: %i[index show]
 
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.build(post_params)
     tag_names = params[:post][:tag_names].split(",")
     tags = tag_names.map{ |tag_name| Tag.find_or_initialize_by(name: tag_name) }
     tags.each do |tag|
@@ -67,12 +67,12 @@ class PostsController < ApplicationController
   end
 
   def likes
-    @posts = current_user.likes_posts
+    @like_posts = current_user.like_posts.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    params.require(:post).permit(:title, :body, :image, :image_cache)
   end
 end

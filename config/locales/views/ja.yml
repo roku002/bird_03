@@ -1,0 +1,106 @@
+ja:
+  defaults:
+    post: 投稿
+    create: 投稿
+    edit: 編集
+    delete_confirm: 削除しますか？
+    password_reset: パスワードリセット
+    flash_message:
+      require_login: ログインしてください
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    create:
+      succcess: ログインしました
+      danger: ログインに失敗しました
+    dastroy:
+      success: ログアウトしました
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      danger: ユーザー登録に失敗しました
+    post_list:
+  posts:
+    new:
+      title: 投稿作成
+    create:
+      success: 投稿を作成しました
+      danger: 投稿を作成出来ませんでした
+    show:
+      title: 投稿詳細画面
+    index:
+      title: 投稿一覧
+    edit:
+      title: 投稿編集
+    likes: 
+      title: いいね一覧
+      no_like: いいね、した投稿がありません。
+  likes:
+    create:
+      success: いいねしました
+    destroy:
+      success: いいねを解除しました
+  profiles:
+    show:
+      title: マイページ
+    edit:
+      title: マイページ編集
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    edit:
+      title: パスワードリセット
+    create:
+      success: パスワードリセット手順を送信しました
+    update:
+      success: パスワードを変更しました
+      danger: パスワードを変更出来ませんでした
+  contacts:
+    new:
+      title: お問い合わせ
+    confirm:
+      title: 入力内容確認
+  static:
+    bird:
+      title: 文鳥の魅力
+    policy:
+      title: プライバシーポリシー
+    terms:
+      title: 利用規約
+  header:
+    new_registration: 新規登録
+    login: ログイン
+    logout: ログアウト
+    board: 掲示板
+    board_index: 掲示板一覧
+    create_board: 掲示板作成
+    post: 投稿
+    post_index: 投稿一覧
+    create_post: 投稿作成
+    mypage: マイページ
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y/%m/%d"

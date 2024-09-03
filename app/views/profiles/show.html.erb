@@ -1,25 +1,33 @@
-<!--<div class="container pt-3">
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3">
+  <h1 class="float-left mb-5"><%= current_user.name %>のマイページ</h1>
+</div>
+<div class="container pt-3">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1 class="float-left mb-5">のマイページ</h1>
+      <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-success float-right' %>
       <table class="table">
-        <div  scope="row">氏名</div>
-          <div><%= current_user.name %></div>
-        </div>
-      <div class='text-center'>
-        <%= link_to '登録ページへ', new_user_path %>
-        <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path %>
-      </div>-->
-
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:email) %></th>
+          <td><%= current_user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:name) %></th>
+          <td><%= current_user.name %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 <div class="container">
-<h1 class="float-left mb-5"><%= current_user.name %>のマイページ</h1>
-  <div class='row' style="padding-top: 70px; padding-bottom: 30px;">
+  <div class='row' style="padding-top: 80px; padding-bottom: 30px;">
     <div class="d-grid gap-2 col-6 mx-auto">
-      <a class="btn btn-primary btn-lg" href="#" role="button">自分の投稿を見る</a>
+      <%= link_to "自分の投稿を見る", post_list_user_path(current_user), class: "btn btn-primary btn-lg" %>
     </div>
   </div>
-  <div class='row' style="padding-bottom: 30px;">
+  <div class='row' style="padding-top: 30px; padding-bottom: 30px;">
     <div class="d-grid gap-2 col-6 mx-auto">
-      <a class="btn btn-primary btn-lg" href="/password_resets/new" role="button">パスワードを変更する</a>
+    <%= link_to "いいね、した投稿一覧", likes_posts_path, class: "btn btn-primary btn-lg" %>
     </div>
   </div>
+</div>

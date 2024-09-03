@@ -1,6 +1,8 @@
+<% content_for(:title, t('.title')) %>
 <div class="container-fluid light-blue-container p-5">
   <div class="row">
     <div class="col-md-8 offset-md-2">
+    <h1>お問い合わせ</h1>
     
     <div class="mb-2">
       <%= flash[:alert] %>
@@ -9,7 +11,7 @@
       <%= form_with model: @contact, url: confirm_contacts_path, local: true, data: { turbo: false } do |f| %>
 
         <div class="form-group">
-          <%= f.label :message, 'メッセージ' %><span class="text-danger">*</span>
+          <%= f.label :message, 'お問い合わせ内容' %><span class="text-danger">*</span>
           <%= f.text_area :message, size: '10x10', class: 'form-control' %>
         </div>
 
