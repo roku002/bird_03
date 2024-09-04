@@ -55,7 +55,10 @@
   </div>
   <div class="row">
     <div class="d-grid gap-2 col-2 offset-md-2">
-      <a class="btn btn-primary btn-lg" href="#" role="button">シェア</a>
+    <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=【2Seeds】%0a%0a#{@post.title}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+      <i class="fab fa-twitter"></i>
+      Xでシェア
+    <% end %>
     </div>
   </div>
 </div>
