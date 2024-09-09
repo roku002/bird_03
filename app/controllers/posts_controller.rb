@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
+    if params[:tag_names]
+      @posts = Post.joins(:tags).where(tags: { name: params[:tag_names] }).includes(:user).order(created_at: :desc).page(params[:page])
+    else
+      @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
+    end
   end
 
   def new
@@ -10,22 +14,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
-    tag_names = params[:post][:tag_names].split(",")
-    tags = tag_names.map{ |tag_name| Tag.find_or_initialize_by(name: tag_name) }
-    tags.each do |tag|
-      if tag.invalid?
-        @tag_name = params[:tag_name]
-        @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
-        return render :edit, status: :unprocessable_entity
-      end
-    end
+    @post = current_user.posts.new(post_params)
+    tag_names = params[:tag_names].split(",")
 
-  @post.tags = tags
     if @post.save
+      @post.save_tags(tag_names)
       redirect_to post_path(@post), success: '投稿を作成しました'
     else
-      @tag_name = params[:tag_name]
       flash.now[:danger] = '投稿を作成できませんでした'
       render :new, status: :unprocessable_entity
     end
@@ -37,15 +32,17 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
+    @tag_names = @post.tags.map(&:name).join(", ")
   end
 
   def update
     @post = current_user.posts.find(params[:id])
-    tag_names = params[:post][:tag_names].split(",")
+    tag_names = params[:tag_names].split(",")
     tags = tag_names.map { |tag_name| Tag.find_or_create_by(name: tag_name) }
+
     tags.each do |tag|
       if tag.invalid?
-        @tag_name = params[:tag_name]
+        @tag_names = params[:tag_names]
         @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
         return render :edit, status: :unprocessable_entity
       end
@@ -54,15 +51,15 @@ class PostsController < ApplicationController
     if @post.update(post_params) && @post.update!(tags: tags)
       redirect_to post_path(@post), success: '投稿を更新しました'
     else
-      @tag_name = params[:tag_name]
+      @tag_names = params[:tag_names]
       flash.now[:danger] = '投稿を更新できませんでした'
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    post = current_user.posts.find(params[:id])
-    post.destroy!
+    @post = current_user.posts.find(params[:id])
+    @post.destroy!
     redirect_to posts_path, success: '投稿を削除しました', status: :see_other
   end
 
