@@ -1,56 +1,17 @@
 <% content_for(:title, @page_title) %>
-<div class=contener>
+
+<div class="container">
   <div class="row">
-      <h1><%= @user.name %>の投稿一覧</h1>
-<% @posts.each do |post| %>
-  <div class="col-sm-12 col-lg-4 mb-3">
-    <div id="post-id-<%= post.id %>" class="card">
-      <% if post.image? %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.image.url, class: "card-img-top", width: "300", height: "200" %>
-        <% end %>
-      <% else %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag "post_placeholder.png", class: "card-img-top", width: "300", height: "200" %>
-        <% end %>
-      <% end %>
-      <div class="card-body">
-        <h4 class="card-title">
-          <%= link_to post.title, post_path(post) %>
-        </h4>
-        <% if current_user == post.user %>
-          <div class='ms-auto'>
-            <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
-              <i class="bi bi-pencil-fill"></i>
-              編集
-            <% end %>
-            <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } do %>
-              <i class="bi bi-trash-fill"></i>
-              削除
-            <% end %>
-          </div>
-          <p>
-            <strong>Tag:</strong>
-            <% post.tags.each do |tag| %>
-              <%= link_to tag.name, posts_path(tag_name: tag.name), class: "btn btn-primary btn-sm" %>
-            <% end %>
-          </p>
+    <h1><%= @user.name %>の投稿一覧</h1>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+        <%= render partial: 'posts/post_index', locals: { post: post } %>
+          <% end %>
         <% else %>
-          <%#= render 'posts/like_button', post: post %>
+          <div class="mb-3">投稿がありません</div>
         <% end %>
-        <ul class="list-inline">
-          <li>
-            <i class="bi bi-person"></i>
-            <%= link_to post.user.name, post_list_user_path(post.user), class: "btn btn-link" %>
-          </li>
-          <li>
-            <i class="bi bi-calendar"></i>
-            <%= l post.created_at, format: :short %>
-          </li>
-        </ul>
-        <p class="card-text"><%= post.body %></p>
       </div>
+      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
-<% end %>
-<%= paginate @posts, theme: 'bootstrap-5' %>
+</div>
