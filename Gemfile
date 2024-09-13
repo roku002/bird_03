@@ -77,6 +77,11 @@ group :test do
 
 end
 
+group :production do
+  # Herokuでログとアセットを処理するためのGem
+  gem 'rails_12factor'
+end
+
 gem 'sorcery'
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
