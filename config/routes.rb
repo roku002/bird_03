@@ -16,7 +16,9 @@ Rails.application.routes.draw do
       get :likes
     end
   end
-  resources :boards, only: %i[new index create show edit update destroy]
+  resources :boards, only: %i[new index create show edit update destroy] do
+    resources :comments, only: %i[create edit destroy], shallow: true
+  end
   resources :likes, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]

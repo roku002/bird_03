@@ -53,9 +53,12 @@
   </div>
   <div class="row">
     <div class="d-grid gap-2 col-2 offset-md-2">
-    <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=【2Seeds】%0a%0a#{@post.title}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
-      <i class="fab fa-twitter"></i>
-      Xでシェア
+    <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=【2Seeds】%0a%0a#{@post.title}", 
+                target: '_blank', 
+                data: { toggle: "tooltip", placement: "bottom" }, 
+                title: "Xでシェア", 
+                class: "btn btn-outline-primary btn-lg d-flex align-items-center justify-content-center" do %>
+      <i class="fab fa-twitter me-2"></i> Xでシェア
     <% end %>
     </div>
   </div>
