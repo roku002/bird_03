@@ -17,10 +17,14 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("comment_#{@comment.id}", partial: "comments/comment", locals: { comment: @comment }) }
-        format.html { redirect_to board_path(@comment.board), notice: 'コメント更新' }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace("comment_#{@comment.id}", partial: "comments/comment", locals: { comment: @comment })
+        end
+        format.html { redirect_to board_path(@comment.board) }
       else
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("comment_form_#{@comment.id}", partial: "comments/form", locals: { comment: @comment }) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace("comment-edit-#{@comment.id}", partial: "comments/edit_comment_form", locals: { comment: @comment })
+        end
         format.html { render :edit, status: :unprocessable_entity }
       end
     end

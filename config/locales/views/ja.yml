@@ -3,6 +3,7 @@ ja:
     post: 投稿
     create: 投稿
     edit: 編集
+    update: 更新
     delete_confirm: 削除しますか？
     password_reset: パスワードリセット
     flash_message:
@@ -66,6 +67,8 @@ ja:
       title: 掲示板一覧
     edit:
       title: 掲示板編集
+  comments:
+    edit_body_label: コメント更新
   profiles:
     show:
       title: マイページ
