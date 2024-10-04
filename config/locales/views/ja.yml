@@ -116,3 +116,4 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y/%m/%d"
+      short2: "%Y/%m/%d %H:%M"
