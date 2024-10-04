@@ -1,0 +1,13 @@
+<turbo-frame id="comment-edit-<%= comment.id %>">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <%= form_with model: comment, url: comment_path(comment), method: :patch, local: false do |f| %>
+        <%= hidden_field_tag 'board_id', comment.board_id %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :body, t('comments.edit_body_label') %>
+        <%= f.text_area :body, class: "form-control mb-3", rows: 4, placeholder: Comment.human_attribute_name(:body) %>
+        <%= f.submit t('defaults.update'), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  </turbo-frame>
