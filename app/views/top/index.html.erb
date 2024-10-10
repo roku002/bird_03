@@ -1,29 +1,25 @@
 <%#= link_to "表示名", xxx_path, class: "クラス名" %>
 <!--<a class="btn btn-primary btn-lg" href="/posts#index" role="button">投稿一覧を見る</a>-->
 
-<div class="container">
-  <div class='row' style="padding-top: 70px; padding-bottom: 30px;">
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <!--<<a class="btn btn-primary btn-lg" href="/bird" role="button">文鳥の魅力</a>-->
-      <%= link_to "文鳥の魅力", bird_path, class: "btn btn-primary btn-lg" %>
-    </div>
-  </div>
+<% breadcrumb :root %>
+<div class="col-lg-8 offset-lg-2">
+  <div class="text-container">
+    <div class="container">
+      <%# ボタンのループ処理でリファクタリング %>
+      <% buttons = [
+        { text: "文鳥の魅力", path: bird_path },
+        { text: "みんなの投稿を見る", path: posts_path },
+        { text: "掲示板を見る", path: boards_path },
+        { text: "投稿する", path: new_post_path }
+      ] %>
 
-  <div class='row' style="padding-bottom: 30px;">
-    <div class="d-grid gap-2 col-6 mx-auto">
-    <%= link_to "みんなの投稿を見る", posts_path, class: "btn btn-primary btn-lg" %>
-    </div>
-  </div>
-
-  <div class='row' style="padding-bottom: 30px;">
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <%= link_to "掲示板を見る", boards_path, class: "btn btn-primary btn-lg" %>
-    </div>
-  </div>
-
-  <div class='row' style="padding-bottom: 70px;">
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <%= link_to "投稿する", new_post_path, class: "btn btn-primary btn-lg" %>
+      <% buttons.each do |button| %>
+        <div class='row mb-5'>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <%= link_to button[:text], button[:path], class: "btn btn-primary btn-lg" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

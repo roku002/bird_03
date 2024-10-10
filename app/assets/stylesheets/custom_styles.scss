@@ -1,0 +1,67 @@
+// rails assets:precompileをコンテナ内で実行して反映
+.navbar-brand {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3498db;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: rgba(52, 152, 219, 0.1);
+  transition: color 0.3s ease, background-color 0.3s ease;
+
+  i {
+    margin-right: 8px; // アイコンとテキストの間にスペースを追加
+  }
+
+  &:hover {
+    color: #2980b9;
+    background-color: rgba(52, 152, 219, 0.2);
+  }
+}
+
+.top-wrapper {
+  background-color: white;
+  height: 500px;
+  position: relative;
+  background-position: center;
+  background-image: url("tori.jpg");
+
+  .top-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    color: blue;
+
+    @media screen and (max-width: 767px) {
+      font-size: 2.0rem;
+    }
+  }
+}
+
+.all-back-image {
+  background-color: rgba(255, 255, 255, 0.3); // 白色で70%の透明度を指定
+  height: 1500px;
+  position: relative;
+  background-position: center;
+  background-image: url("tori.jpg");
+}
+
+.text-container {
+  background-color: rgba(255, 255, 255, 0.8); // 背景を半透明にしてテキストを目立たせる
+  border-radius: 10px; // 角を丸くする
+  padding: 20px; // パディングを追加
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); // シャドウを追加
+}
+
+h1, h2, h3 {
+  color: #333; // テキスト色をダークにして視認性を向上
+}
+
+.chapter {
+  color: #555; // サブ見出しの色を少し薄くする
+}

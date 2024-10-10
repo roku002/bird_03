@@ -2,6 +2,7 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-auto">
+    <div class="text-container">
       <h1><%= t('.title') %></h1>
       <%= form_with model: @user, url: profile_path, method: :put do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
@@ -15,6 +16,7 @@
         </div>
         <%= f.submit class: "btn btn-primary" %>
       <% end %>
+    </div>
     </div>
   </div>
 </div>

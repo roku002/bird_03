@@ -8,16 +8,23 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= display_meta_tags(default_meta_tags) %>
   </head>
 
   <body>
-  <% if logged_in? %>
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/not_login_header' %>
-  <% end %>
-    <%= render 'shared/flash_message' %>
-  <%= yield %>
-    <%= render 'shared/footer' %>
+  <div class="all-back-image">
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/not_login_header' %>
+    <% end %>
+
+    <div class="breadcrumbs">
+      <%= breadcrumbs separator: " &rsaquo; " %>
+    </div>
+      <%= render 'shared/flash_message' %>
+    <%= yield %>
+  </div>
+      <%= render 'shared/footer' %>
   </body>
 </html>

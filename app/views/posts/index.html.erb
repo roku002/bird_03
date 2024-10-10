@@ -1,21 +1,23 @@
 <% content_for(:title, t('.title')) %>
+<% breadcrumb :posts %>
+
 <div class="container pt-3">
-  <div class="row">
-    <h1>みんなの投稿一覧</h1>
-  </div>
   <!-- 掲示板一覧 -->
   <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <% if @posts.present? %>
-          <% @posts.each do |post| %>
-            <%= render partial: 'post_index', locals: { post: post } %>
+    <div class="text-container">
+      <h1>みんなの投稿一覧</h1>
+      <div class="col-12">
+        <div class="row">
+          <% if @posts.present? %>
+            <% @posts.each do |post| %>
+              <%= render partial: 'post_index', locals: { post: post } %>
+            <% end %>
+          <% else %>
+            <div class="mb-3">投稿がありません</div>
           <% end %>
-        <% else %>
-          <div class="mb-3">投稿がありません</div>
-        <% end %>
+        </div>
+        <%= paginate @posts, theme: 'bootstrap-5' %>
       </div>
-      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

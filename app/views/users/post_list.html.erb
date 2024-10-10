@@ -2,6 +2,7 @@
 
 <div class="container">
   <div class="row">
+  <div class="text-container">
     <h1><%= @user.name %>の投稿一覧</h1>
     <% if @posts.present? %>
       <% @posts.each do |post| %>
@@ -13,5 +14,6 @@
       </div>
       <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
+  </div>
   </div>
 </div>

@@ -2,6 +2,7 @@
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
+    <div class="text-container">
       <h1><%= t('.title') %></h1>
       <article class="card">
         <div class="card-body">
@@ -32,9 +33,11 @@
         </div>
       </article>
     </div>
+    </div>
   </div>
   <div class="row">
     <div class="d-grid gap-2 col-2 offset-md-2">
+    <div class="text-container">
     <%= link_to "https://twitter.com/share?url=#{board_url(@board)}&text=【2Seeds】%0a%0a#{@board.title}", 
             target: '_blank', 
             data: { toggle: "tooltip", placement: "bottom" }, 
@@ -43,17 +46,24 @@
       <i class="fab fa-twitter me-1"></i>Xでシェア
       <% end %>
     </div>
+    </div>
   </div>
   <%# コメントフォーム id="comment-form"%>
-  <%= render 'comments/form', comment: @comment, board: @board %>
+  <div class="col-lg-8 offset-lg-2">
+  <div class="text-container">
+    <%= render 'comments/form', comment: @comment, board: @board %>
+  </div>
+  </div>
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
+    <div class="text-container">
       <table class="table">
         <tbody id="table-comment">
           <%# コメント一覧 %>
           <%= render @comments %>
         </tbody>
       </table>
+    </div>
     </div>
   </div>
 </div>
