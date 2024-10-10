@@ -1,5 +1,7 @@
 <% content_for(:title, t('.title')) %>
+<% breadcrumb :boards %>
 <div class="container pt-3">
+<div class="text-container">
   <div class="row">
     <h1>掲示板一覧</h1>
   </div>
@@ -18,4 +20,5 @@
       <%= paginate @boards, theme: 'bootstrap-5' %>
     </div>
   </div>
+</div>
 </div>

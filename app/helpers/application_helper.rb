@@ -12,14 +12,14 @@ module ApplicationHelper
       charset: 'utf-8',
       description: 'Buncho-Loberでは、文鳥の写真の投稿や、質問、雑談掲示板などを建てることが出来ます。',
       keywords: '文鳥,鳥,小鳥,手乗り',
-      canonical: https://first-app-bird-e6fdc1b0fdf3.herokuapp.com/,
+      canonical: 'https://first-app-bird-e6fdc1b0fdf3.herokuapp.com/',
       separator: '|',
       og:{
         site_name: :site,
         title: :title,
         description: :description,
         type: 'website',
-        url: https://first-app-bird-e6fdc1b0fdf3.herokuapp.com/,
+        url: 'https://first-app-bird-e6fdc1b0fdf3.herokuapp.com/',
         image: image_url('tori.jpg'),
         local: 'ja-JP'
       },

@@ -2,6 +2,7 @@
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
+    <div class="text-container">
       <h1><%= t('.title') %></h1>
       <article class="card">
         <div class="card-body">
@@ -50,9 +51,11 @@
         </div>
       </article>
     </div>
+    </div>
   </div>
   <div class="row">
     <div class="d-grid gap-2 col-2 offset-md-2">
+    <div class="text-container">
     <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=【2Seeds】%0a%0a#{@post.title}", 
                 target: '_blank', 
                 data: { toggle: "tooltip", placement: "bottom" }, 
@@ -60,6 +63,7 @@
                 class: "btn btn-outline-primary btn-lg d-flex align-items-center justify-content-center" do %>
       <i class="fab fa-twitter me-2"></i> Xでシェア
     <% end %>
+    </div>
     </div>
   </div>
 </div>
