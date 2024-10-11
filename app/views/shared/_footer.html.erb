@@ -2,38 +2,34 @@
 <footer class="container py-5">
   <div class="row">
     <div class="col-12 col-md">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+      <!-- ロゴやアイコン部分 -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24">
+        <title>Bird-Lover</title>
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
+      </svg>
       <small class="d-block mb-3 text-muted">&copy; 2024 Bird-Lover</small>
     </div>
+    
+    <!-- 利用規約のリンク -->
     <div class="col-6 col-md">
-  <!--<h5>このサイトついて</h5>-->
-        <ul class="list-unstyled text-small">
-      <!--<li><%= link_to '特徴', '#', class: "link-secondary" %></li>
-          <li><%= link_to 'みんなの声', '#', class: "link-secondary" %></li>-->
-          <li><%= link_to '利用規約', terms_path, class: "link-secondary" %></li>
-        </ul>
+      <ul class="list-unstyled text-small">
+        <li><%= link_to '利用規約', terms_path, class: "link-secondary" %></li>
+      </ul>
     </div>
-    <div class="col-6 col-md">
-  <!--<h5>ガイド・ヘルプ</h5>-->
-        <ul class="list-unstyled text-small">
-      <!--<li><%= link_to '利用規約', "#", class: "link-secondary" %></li>
-          <li><%= link_to 'プライバシーポリシー', '#', class: "link-secondary" %></li>-->
-          <li><%= link_to 'プライバシーポリシー', policy_path, class: "link-secondary" %></li>
-        </ul>
+    
+    <!-- プライバシーポリシーのリンク -->
+    <div class="col-6 col-md ms-md-auto">
+      <ul class="list-unstyled text-small">
+        <li><%= link_to 'プライバシーポリシー', policy_path, class: "link-secondary" %></li>
+      </ul>
     </div>
-<!--<div class="col-6 col-md">
-      <h5>お知らせ</h5>
-        <ul class="list-unstyled text-small">
-          <li><%= link_to 'ニュース', '#', class: "link-secondary" %></li>
-          <li><%= link_to '運営からのお知らせ', '#', class: "link-secondary" %></li>
-        </ul>
-    </div>-->
+
+    <!-- お問い合わせのリンク -->
     <div class="col-6 col-md">
-  <!--<h5>ヘルプ</h5>-->
-        <ul class="list-unstyled text-small">
-      <!--<li><%= link_to 'よくある質問', '#', class: "link-secondary" %></li>-->
-          <li><%= link_to 'お問い合わせ', new_contact_path, class: "link-secondary" %></li>
-        </ul>
+      <ul class="list-unstyled text-small">
+        <li><%= link_to 'お問い合わせ', new_contact_path, class: "link-secondary" %></li>
+      </ul>
     </div>
   </div>
 </footer>

@@ -1,5 +1,5 @@
 crumb :root do
-  link raw('<i class="bi bi-house-door-fill"></i> Home'), root_path
+  link content_tag(:i, '', class: 'bi bi-house-door-fill') + ' Home', root_path
 end
 
 crumb :posts do

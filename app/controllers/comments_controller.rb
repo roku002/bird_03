@@ -1,16 +1,11 @@
 class CommentsController < ApplicationController
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.save
-  end
-
-  def destroy
-    @comment = current_user.comments.find(params[:id])
-    @comment.destroy!
-  end
-
-  def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
@@ -28,6 +23,11 @@ class CommentsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy!
   end
 
   private

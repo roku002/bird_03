@@ -1,10 +1,10 @@
 <div class="col-sm-12 col-lg-4 mb-3">
   <div id="post-id-<%= post.id %>">
-    <div class: "card-img-top",>
+    <div class="card">
       <% if post.image? %>
-        <%= image_tag post.image.url, class:"card-img-top", width: "300", height:"200"%>
+        <%= image_tag post.image.url, class: "card-img-top", width: "300", height: "200" %>
       <% else %>
-        <%= image_tag "post_placeholder.png", class: "card-img-top", width: "300", height:"200" %>
+        <%= image_tag "post_placeholder.png", class: "card-img-top", width: "300", height: "200" %>
       <% end %>
       <div class="card-body">
         <div class="d-flex">
@@ -16,12 +16,12 @@
               <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
                 <i class="bi bi-pencil-fill"></i>
               <% end %>
-              <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？'} do %>
+              <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } do %>
                 <i class="bi bi-trash-fill"></i>
               <% end %>
             </div>
           <% else %>
-            <%= render 'like_buttun', { post: post } %>
+            <%= render 'like_buttun', post: post %>
           <% end %>
         </div>
         <div class="d-flex">
@@ -32,12 +32,11 @@
           </div>
         </div>
         <ul class="list-inline">
-          <li>
+          <li class="list-inline-item">
             <i class="bi bi-person"></i>
             <%= link_to "by #{post.user.name}", post_list_user_path(post.user), class: "btn btn-link" %>
-            <!--<a href="/posts/new"><%= post.user.name %></a></li>-->
           </li>
-          <li>
+          <li class="list-inline-item">
             <i class="bi bi-calendar"></i>
             <%= l post.created_at, format: :short %>
           </li>

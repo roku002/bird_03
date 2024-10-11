@@ -17,9 +17,7 @@ class Post < ApplicationRecord
     tag_names.each do |tag_name|
       tag = Tag.find_or_initialize_by(name: tag_name.strip)
 
-      unless self.tags.include?(tag)
-        self.tags << tag
-      end
+      tags << tag unless tags.include?(tag)
     end
   end
 end

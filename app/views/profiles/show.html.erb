@@ -3,14 +3,10 @@
 <div class="container pt-3">
   <div class="text-container">
     <h1 class="float-left mb-5"><%= current_user.name %>のマイページ</h1>
-  </div>
-</div>
 
-<div class="container">
-  <div class="text-container">
     <div class="row">
       <div class="col-md-10 offset-md-1">
-        <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-success float-right' %>
+        <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-success float-right mb-3' %>
         <table class="table">
           <tr>
             <th scope="row"><%= User.human_attribute_name(:email) %></th>
@@ -23,20 +19,18 @@
         </table>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="container">
-  <div class="text-container">
     <div class="row py-5">
       <div class="d-grid gap-2 col-6 mx-auto">
         <%= link_to "自分の投稿を見る", post_list_user_path(current_user), class: "btn btn-primary btn-lg" %>
       </div>
     </div>
+
     <div class="row py-3">
       <div class="d-grid gap-2 col-6 mx-auto">
         <%= link_to "いいね、した投稿一覧", likes_posts_path, class: "btn btn-primary btn-lg" %>
       </div>
     </div>
-  </div>
+
+  </div> <!-- text-container ends here -->
 </div>

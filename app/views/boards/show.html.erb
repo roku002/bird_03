@@ -2,68 +2,65 @@
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
-    <div class="text-container">
-      <h1><%= t('.title') %></h1>
-      <article class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-3">
-              <%= image_tag @board.board_image_url, width: "300", height: "200", class: "card-img-top img-fluid" %>
-            </div>
-            <div class="col-md-9">
-              <h3 style="display: inline;"><%= @board.title %></h3>
-              <ul class="list-inline">
-                <li class="list-inline-item"><a href="#"><%= "by #{@board.user.name}" %></a></li>
-                <li class="list-inline-item"><%= l @board.created_at, format: :short %></li>
-              </ul>
-              <% if current_user &&  current_user.own?(@board) %>
-                <div class='d-flex justify-content-end'>
-                  <%= link_to edit_board_path(@board), id: "button-edit-#{@board.id}" do %>
-                    <i class="bi bi-pencil-fill"></i>
-                  <% end %>
-                  <%= link_to board_path(@board), id: "button-delete-#{@board.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？'} do %>
-                    <i class="bi bi-trash-fill"></i>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
+      <div class="text-container">
+        <h1><%= t('.title') %></h1>
+        <article class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <%= image_tag @board.board_image_url, width: "300", height: "200", class: "card-img-top img-fluid" %>
+              </div>
+              <div class="col-md-9">
+                <h3 style="display: inline;"><%= @board.title %></h3>
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a href="#"><%= "by #{@board.user.name}" %></a>
+                  </li>
+                  <li class="list-inline-item"><%= l @board.created_at, format: :short %></li>
+                </ul>
+                <% if current_user&.own?(@board) %>
+                  <div class='d-flex justify-content-end'>
+                    <%= link_to edit_board_path(@board), id: "button-edit-#{@board.id}" do %>
+                      <i class="bi bi-pencil-fill"></i>
+                    <% end %>
+                    <%= link_to board_path(@board), id: "button-delete-#{@board.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？'} do %>
+                      <i class="bi bi-trash-fill"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
             <p><%= simple_format(@board.body) %></p>
+            <div class="d-grid gap-2 col-2 mt-3">
+              <%= link_to "https://twitter.com/share?url=#{board_url(@board)}&text=【2Seeds】%0a%0a#{@board.title}", 
+                          target: '_blank', 
+                          data: { toggle: "tooltip", placement: "bottom" }, 
+                          title: "Xでシェア", 
+                          class: "btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center" do %>
+                <i class="fab fa-twitter me-1"></i>Xでシェア
+              <% end %>
+            </div>
           </div>
-        </div>
-      </article>
-    </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="d-grid gap-2 col-2 offset-md-2">
-    <div class="text-container">
-    <%= link_to "https://twitter.com/share?url=#{board_url(@board)}&text=【2Seeds】%0a%0a#{@board.title}", 
-            target: '_blank', 
-            data: { toggle: "tooltip", placement: "bottom" }, 
-            title: "Xでシェア", 
-            class: "btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center" do %>
-      <i class="fab fa-twitter me-1"></i>Xでシェア
-      <% end %>
-    </div>
+        </article>
+      </div>
     </div>
   </div>
-  <%# コメントフォーム id="comment-form"%>
+
   <div class="col-lg-8 offset-lg-2">
-  <div class="text-container">
-    <%= render 'comments/form', comment: @comment, board: @board %>
+    <div class="text-container">
+      <%= render 'comments/form', comment: @comment, board: @board %>
+    </div>
   </div>
-  </div>
+
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
-    <div class="text-container">
-      <table class="table">
-        <tbody id="table-comment">
-          <%# コメント一覧 %>
-          <%= render @comments %>
-        </tbody>
-      </table>
-    </div>
+      <div class="text-container">
+        <table class="table">
+          <tbody id="table-comment">
+            <%= render @comments %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -2,15 +2,24 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    if params[:tag_names]
-      @posts = Post.joins(:tags).where(tags: { name: params[:tag_names] }).includes(:user).order(created_at: :desc).page(params[:page])
-    else
-      @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
-    end
+    @posts = if params[:tag_names]
+               Post.joins(:tags).where(tags: { name: params[:tag_names] }).includes(:user).order(created_at: :desc).page(params[:page])
+             else
+               Post.includes(:user).order(created_at: :desc).page(params[:page])
+             end
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def new
     @post = Post.new
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
+    @tag_names = @post.tags.map(&:name).join(", ")
   end
 
   def create
@@ -26,29 +35,20 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
-
-  def edit
-    @post = current_user.posts.find(params[:id])
-    @tag_names = @post.tags.map(&:name).join(", ")
-  end
-
   def update
     @post = current_user.posts.find(params[:id])
     tag_names = params[:tag_names].split(",")
     tags = tag_names.map { |tag_name| Tag.find_or_create_by(name: tag_name) }
 
     tags.each do |tag|
-      if tag.invalid?
-        @tag_names = params[:tag_names]
-        @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
-        return render :edit, status: :unprocessable_entity
-      end
+      next unless tag.invalid?
+
+      @tag_names = params[:tag_names]
+      @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
+      return render :edit, status: :unprocessable_entity
     end
 
-    if @post.update(post_params) && @post.update!(tags: tags)
+    if @post.update(post_params) && @post.update!(tags:)
       redirect_to post_path(@post), success: '投稿を更新しました'
     else
       @tag_names = params[:tag_names]
