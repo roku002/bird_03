@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   resources :contacts, only: [:new, :create] do
     collection do
-        post 'confirm'
-        post 'back'
-        get 'done'
+      post 'confirm'
+      post 'back'
+      get 'done'
     end
   end
 

@@ -1,6 +1,6 @@
 module ApplicationHelper
   def page_title(title = '')
-    base_title = 'BIRD APP' 
+    base_title = 'BIRD APP'
     title.present? ? "#{title} | #{base_title}" : base_title
   end
 
@@ -14,7 +14,7 @@ module ApplicationHelper
       keywords: '文鳥,鳥,小鳥,手乗り',
       canonical: 'https://first-app-bird-e6fdc1b0fdf3.herokuapp.com/',
       separator: '|',
-      og:{
+      og: {
         site_name: :site,
         title: :title,
         description: :description,
@@ -26,7 +26,7 @@ module ApplicationHelper
       twitter: {
         card: 'summary_large_image', # Twitterで表示する場合は大きいカードに変更
         site: '#', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
-        image: image_url('tori.jpg'),# 配置するパスやファイル名によって変更
+        image: image_url('tori.jpg') # 配置するパスやファイル名によって変更
       }
     }
   end

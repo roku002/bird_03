@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def post_list
     @user = User.find_by(id: params[:id])
     @posts = @user.posts.page(params[:page])
-    @page_title = "#{@user.name}の投稿"  # ここでタイトルを設定
+    @page_title = "#{@user.name}の投稿" # ここでタイトルを設定
   end
 
   def create

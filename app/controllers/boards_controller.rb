@@ -2,17 +2,21 @@ class BoardsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
 
   def index
-    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page])
-  end
-
-  def new
-    @board = Board.new
+    @boards = Board.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show
     @board = Board.find(params[:id])
     @comment = Comment.new
     @comments = @board.comments.includes(:user).order(created_at: :desc)
+  end
+
+  def new
+    @board = Board.new
+  end
+
+  def edit
+    @board = current_user.boards.find(params[:id])
   end
 
   def create
@@ -23,10 +27,6 @@ class BoardsController < ApplicationController
       flash.now[:danger] = '掲示板を作成できませんでした'
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @board = current_user.boards.find(params[:id])
   end
 
   def update

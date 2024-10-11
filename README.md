@@ -21,10 +21,11 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Rubocopテスト
+* docker-compose exec web bundle exec rubocop -a
 
 # サービス名
-## 文鳥ラバー（仮）
+## Buncho-Lover
 
 **サービス概要**
 
@@ -71,9 +72,11 @@ Things you may want to cover:
 - 文鳥の魅力の記事をTOPページに書く
 - タグ機能
 1. 本リリース
-- 動画投稿機能
-- 質問掲示板作成
-- コメント投稿機能
+- 静的OGP
+- 掲示板作成
+- コメント機能
+- ソーシャルログイン(Google)
+- GitHubActions(Rubocop,Rspec)
 
 **機能の実装方針予定**
 - チャット機能
