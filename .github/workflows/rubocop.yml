@@ -20,6 +20,7 @@ jobs:
   rspec:
     needs: setup
     runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres:17
