@@ -1,10 +1,11 @@
-name: Check RuboCop
+name: Check RuboCop, Rspec
+
 on:
   push:
   pull_request:
 
 jobs:
-  rubocop:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -13,7 +14,48 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: '3.2.2'
           bundler-cache: true
+
+  rspec:
+    needs: setup
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: app_test
+        ports:
+          - 5432:5432
+        options: > 
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        volumes:
+          - postgres_data:/var/lib/postgresql/data
+
+    steps:
+      - name: Setup database
+        run: |
+          cp config/database.ci.yml config/database.yml
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:schema:load RAILS_ENV=test
+
+      - name: Run RSpec
+        run: bundle exec rspec
+
+  rubocop:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Run RuboCop
         run: bundle exec rubocop
+
+volumes:
+  postgres_data:  # ボリューム定義

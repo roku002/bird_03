@@ -22,7 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * Rubocopテスト
-* docker-compose exec web bundle exec rubocop -a
+* docker compose exec web bundle exec rubocop -a
+
+* Rspecテスト
+* コンテナ内で$ bundle exec rspec
 
 # サービス名
 ## Buncho-Lover
