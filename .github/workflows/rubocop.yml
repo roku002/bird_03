@@ -34,13 +34,10 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        volumes:
-          - postgres_data:/var/lib/postgresql/data
 
     steps:
       - name: Setup database
         run: |
-          cp config/database.ci.yml config/database.yml
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:schema:load RAILS_ENV=test
 
@@ -56,6 +53,3 @@ jobs:
 
       - name: Run RuboCop
         run: bundle exec rubocop
-
-volumes:
-  postgres_data:  # ボリューム定義
