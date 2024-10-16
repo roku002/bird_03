@@ -41,9 +41,12 @@ jobs:
       - name: Install gems
         run: bundle install
 
+      - name: Wait for PostgreSQL
+        run: sleep 10 # 10秒待機
+
       - name: Setup database
         run: |
-          cp -v config/database.yml.ci config/database.yml
+          cp -v config/database.yml.ci config/database.yml  # CI用の設定をコピー
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:schema:load RAILS_ENV=test
 
@@ -53,6 +56,7 @@ jobs:
   rubocop:
     needs: setup
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
