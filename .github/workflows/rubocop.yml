@@ -32,15 +32,16 @@ jobs:
           - 5432:5432
         options: > 
           --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
+          --health-interval 30s
+          --health-timeout 10s
           --health-retries 5
 
     steps:
       - name: Setup database
         run: |
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:schema:load RAILS_ENV=test
+          cp -v config/database.yml.ci config/database.yml
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
 
       - name: Run RSpec
         run: bundle exec rspec
