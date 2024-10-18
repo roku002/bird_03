@@ -1,0 +1,89 @@
+name: Actions
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+          bundler-cache: true
+
+      - name: Install Bundler
+        run: gem install bundler
+
+  # rspec:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+
+  #   services:
+  #     postgres:
+  #       image: postgres:17
+  #       ports:
+  #         - 5432:5432
+  #       env:
+  #         POSTGRES_USER: postgres
+  #         POSTGRES_PASSWORD: password
+  #         POSTGRES_DB: app_test
+  #       options: >-
+  #         --health-cmd "pg_isready -U postgres" 
+  #         --health-interval 30s 
+  #         --health-timeout 5s 
+  #         --health-retries 5
+
+  #   steps:
+  #     - name: Wait for PostgreSQL
+  #       run: sleep 10 # 10秒待機
+
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Set up Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: '3.2.2'
+  #         bundler-cache: true
+
+  #     - name: Setup database
+  #       run: |
+  #         cp -v config/database.yml.ci config/database.yml
+  #         bundle exec rails db:create RAILS_ENV=test
+  #         bundle exec rails db:schema:load RAILS_ENV=test
+
+  #     - name: Run RSpec
+  #       run: bundle exec rspec
+
+  # rubocop:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Install gems
+  #       run: bundle install
+
+  #     - name: Run RuboCop
+  #       run: bundle exec rubocop
+  rubocop:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run RuboCop
+        run: bundle exec rubocop
