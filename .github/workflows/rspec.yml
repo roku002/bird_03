@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [pull_request]
 
 jobs:
   rspec:
@@ -10,7 +10,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:10.8
+        image: postgres:16.3
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ""

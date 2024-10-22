@@ -1,7 +1,6 @@
 name: rubocop
 
 on:
-  push:
   pull_request:
 
 jobs:
