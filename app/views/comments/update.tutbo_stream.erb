@@ -1,9 +1,9 @@
 <% if @comment.errors.present? %>
   <%= turbo_stream.replace "comment-form-#{@comment.id}" do %>
-    <%= render 'comments/edit_comment_form', comment: @comment %>
+    <%= render partial: 'comments/edit_comment_form', locals: { comment: @comment } %>
   <% end %>
 <% else %>
-  <%= turbo_stream.replace "comment-#{@comment.id}" do %>
-    <%= render 'comments/comment', comment: @comment %>
+  <%= turbo_stream.replace dom_id(@comment} do %>
+    <%= render partial: 'comments/comment', locals: { comment: @comment } %>
   <% end %>
 <% end %>

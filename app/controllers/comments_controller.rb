@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace("comment_#{@comment.id}", partial: "comments/comment", locals: { comment: @comment })
+          render turbo_stream: turbo_stream.replace("comment_#{@comment.id}", partial: 'comments/comment', locals: { comment: @comment })
         end
         format.html { redirect_to board_path(@comment.board) }
       else

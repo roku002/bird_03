@@ -1,4 +1,4 @@
-<turbo-frame id="comment-edit-<%= comment.id %>">
+<turbo-frame_tag id="comment-edit-<%= comment.id %>">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
       <%= form_with model: comment, url: comment_path(comment), method: :patch, local: false do |f| %>

@@ -6,8 +6,14 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+* このアプリケーションはRuby 3.2.2で動作します。
 
 * System dependencies
+  - Ruby 3.2.2
+  - Rails 7.0.8
+  - PostgreSQL 17
+  - Node.js 19
+  - Yarn
 
 * Configuration
 
@@ -22,7 +28,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * Rubocopテスト
-* docker compose exec web bundle exec rubocop -a
+* $ docker compose exec web bundle exec rubocop -a
 
 * Rspecテスト
 * コンテナ内で$ bundle exec rspec
@@ -77,10 +83,10 @@ Things you may want to cover:
 1. 本リリース
 - 静的OGP
 - 掲示板作成
-- コメント機能
+- コメント機能(trrbo stream)
 - ソーシャルログイン(Google)
 - GitHubActions(Rubocop,Rspec)
 
 **機能の実装方針予定**
-- チャット機能
+- チャット機能(Action cable)
 - 画像加工・合成機能
