@@ -66,5 +66,6 @@ jobs:
         PGPORT: ${{ job.services.postgres.ports[5432] }}
         RAILS_ENV: test
       run: |
+        cp config/database.ci.yml config/database.yml
         bin/rails db:create db:schema:load
         bundle exec rspec
