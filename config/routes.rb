@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     end
   end
 
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   get 'bird', to: 'static#bird'
   get 'terms', to: 'static#terms'
   get 'policy', to: "static#policy"

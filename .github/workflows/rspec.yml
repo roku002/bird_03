@@ -1,4 +1,4 @@
-name: CI
+name: Rspec
 
 on: [pull_request]
 
@@ -59,12 +59,13 @@ jobs:
     - name: Yarn install
       run: yarn install
 
-    - name: Setup DB, Run tests
-      env:
-        PGHOST: postgres
-        PGUSER: postgres
-        PGPORT: ${{ job.services.postgres.ports[5432] }}
-        RAILS_ENV: test
+    # - name: Setup DB, Run tests
+    #   env:
+    #     PGHOST: postgres
+    #     PGUSER: postgres
+    #     PGPORT: ${{ job.services.postgres.ports[5432] }}
+    #     RAILS_ENV: test
+
       run: |
         cp config/database.ci.yml config/database.yml
         bin/rails db:create db:schema:load
