@@ -1,2 +1,2 @@
 sorcery:
-    google_callback_url: 'https://your_app_url/oauth/callback?provider=google'
+  google_callback_url: 'https://first-app-bird-e6fdc1b0fdf3.herokuapp.com/oauth/callback?provider=google'

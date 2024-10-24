@@ -15,6 +15,9 @@
           <%= link_to t('header.login'), login_path, class: "nav-link" %>
         </li>
         <li class="nav-item ml-3">
+          <%= link_to "Googleアカウントでログイン", auth_at_provider_path(provider: :google), class: "nav-link" %>
+        </li>
+        <li class="nav-item ml-3">
           <%= link_to t('header.new_registration'), new_user_path, class: "nav-link" %>
         </li>
       </ul>
