@@ -110,6 +110,7 @@ GEM
     deep_merge (1.2.2)
     diff-lcs (1.5.1)
     erubi (1.12.0)
+    excon (1.1.0)
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.3)
@@ -122,6 +123,23 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.16.3)
+    fog-aws (3.29.0)
+      base64 (~> 0.2.0)
+      fog-core (~> 2.6)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+    fog-core (2.6.0)
+      builder
+      excon (~> 1.0)
+      formatador (>= 0.2, < 2.0)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.4)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     gretel (5.0.1)
@@ -168,6 +186,7 @@ GEM
       letter_opener (~> 1.7)
       railties (>= 5.2)
       rexml
+    logger (1.6.1)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -181,10 +200,15 @@ GEM
     meta-tags (2.22.1)
       actionpack (>= 6.0.0, < 8.1)
     method_source (1.0.0)
+    mime-types (3.6.0)
+      logger
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2024.1001)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
     net-http (0.4.1)
       uri
@@ -387,6 +411,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  fog-aws
   gretel
   jbuilder
   jsbundling-rails

@@ -31,7 +31,7 @@ Things you may want to cover:
 * $ docker compose exec web bundle exec rubocop -a
 
 * Rspecテスト
-* コンテナ内で$ bundle exec rspec
+* コンテナ内で $ bundle exec rspec
 
 # サービス名
 ## Buncho-Lover
@@ -70,23 +70,25 @@ Things you may want to cover:
 
 **機能候補**
 1. MVP
-- ログイン
-- 新規登録
-- マイページ
-- 投稿機能(画像・タイトル・本文・タグ・投稿日・)
-- 投稿一覧画面
-- 投稿詳細画面
-- パスワード再設定機能
-- いいね機能
-- 文鳥の魅力の記事をTOPページに書く
-- タグ機能
+ - ログイン
+ - 新規登録
+ - マイページ
+ - 投稿機能(画像・タイトル・本文・タグ・投稿日・)
+ - 投稿一覧画面
+ - 投稿詳細画面
+ - パスワード再設定機能
+ - いいね機能
+ - 文鳥の魅力を書く
+ - タグ機能
 1. 本リリース
-- 静的OGP
-- 掲示板作成
-- コメント機能(trrbo stream)
-- ソーシャルログイン(Google)
-- GitHubActions(Rubocop,Rspec)
+ - 静的OGP
+ - minimagick導入
+ - 掲示板作成
+ - コメント機能(turbo_stream)
+ - チャット機能(Action_cable)
+ - ソーシャルログイン(Google)
+ - GitHubActions(Rubocop,Rspec)
+ - AWSのS3外部ストレージを利用して本番環境の画像を置く
 
 **機能の実装方針予定**
-- チャット機能(Action cable)
-- 画像加工・合成機能
+- AIを利用した機能
