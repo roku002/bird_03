@@ -7,10 +7,10 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'Buncho-Lover',
-      title: '文鳥好きの写真投稿や質問掲示板サービス',
+      title: '文鳥好きや飼うか迷っている方の為の写真投稿や質問・雑談出来るサービス',
       reverse: true,
       charset: 'utf-8',
-      description: 'Buncho-Loberでは、文鳥の写真の投稿や、質問、雑談掲示板などを建てることが出来ます。',
+      description: 'Buncho-Loberでは、文鳥の写真の投稿や、質問・雑談掲示板などを建てリアルタイムで話す事が出来ます。',
       keywords: '文鳥,鳥,小鳥,手乗り',
       canonical: 'https://first-app-bird-e6fdc1b0fdf3.herokuapp.com/',
       separator: '|',
