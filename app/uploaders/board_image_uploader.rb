@@ -20,6 +20,13 @@ class BoardImageUploader < CarrierWave::Uploader::Base
   def default_url
     'post_placeholder'
   end
+
+  if Rails.env.production?
+    storage :fog # 本番環境ではfogを使用
+  else
+    storage :file # 開発環境とテスト環境ではfileを使用
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
