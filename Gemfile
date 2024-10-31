@@ -95,3 +95,4 @@ gem 'mini_magick'
 gem 'meta-tags'
 gem 'gretel'
 gem 'fog-aws'
+gem "aws-sdk-s3", require: false
