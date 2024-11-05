@@ -4,6 +4,7 @@ require 'carrierwave/storage/fog'
 
 if Rails.env.test?
   CarrierWave.configure do |config|
+    config.fog_public = true
     config.storage = :file
     config.enable_processing = false
   end
@@ -17,7 +18,7 @@ else
       aws_access_key_id: ENV['S3_ACCESS_KEY_ID'], # 環境変数名を修正
       aws_secret_access_key: ENV['S3_SECRET_ACCESS_KEY'], # 環境変数名を修正
       region: ENV['S3_REGION'], # 環境変数でリージョンを指定
-      # path_style: true
+      path_style: true
     }
   end
 end
